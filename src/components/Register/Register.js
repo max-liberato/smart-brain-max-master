@@ -1,5 +1,8 @@
 import React from 'react';
 
+const appUrl = 'https://guarded-garden-18374.herokuapp.com/';
+//const appUrl = 'http://localhost:3000/';
+
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +26,7 @@ class Register extends React.Component {
   }
 
   onSubmitSignIn = () => {
-    fetch('http://localhost:3000/register', {
+    fetch(appUrl+'register', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
