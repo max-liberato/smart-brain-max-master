@@ -19,7 +19,7 @@ const particlesOptions = {
       }
     }
   }
-}
+};
 
 const initialState = {
   input: '',
@@ -34,8 +34,8 @@ const initialState = {
     entries: 0,
     joined: ''
   }
-}
-
+};
+ 
 const appUrl = 'https://guarded-garden-18374.herokuapp.com/';
 //const appUrl = 'http://localhost:3000/';
 
@@ -43,7 +43,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = initialState;
-  }
+  };
 
   loadUser = (data) => {
     this.setState({user: {
@@ -53,7 +53,7 @@ class App extends Component {
       entries: data.entries,
       joined: data.joined
     }})
-  }
+  };
 
   calculateFaceLocation = (data) => {
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
@@ -66,15 +66,15 @@ class App extends Component {
       rightCol: width - (clarifaiFace.right_col * width),
       bottomRow: height - (clarifaiFace.bottom_row * height)
     }
-  }
+  };
 
   displayFaceBox = (box) => {
     this.setState({box: box});
-  }
+  };
 
   onInputChange = (event) => {
     this.setState({input: event.target.value});
-  }
+  };
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
@@ -105,7 +105,7 @@ class App extends Component {
         this.displayFaceBox(this.calculateFaceLocation(response))
       })
       .catch(err => console.log(err));
-  }
+  };
 
   onRouteChange = (route) => {
     if (route === 'signout') {
@@ -114,7 +114,7 @@ class App extends Component {
       this.setState({isSignedIn: true})
     }
     this.setState({route: route});
-  }
+  };
 
   render() {
     const { isSignedIn, imageUrl, route, box } = this.state;
